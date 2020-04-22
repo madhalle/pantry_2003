@@ -33,10 +33,3 @@ class PantryTest < Minitest::Test
     assert_equal 7, @pantry.stock_check(@ingredient2)
   end
 end
-# ```markdown
-# There are **4** Possible Points in Iteration 1:
-# 1. Ingredient Creation - including all attr_readers
-# 2. Pantry Creation - including all attr_readers
-# 3. Pantry #check_stock
-# 4. Pantry #restock
-# ```
