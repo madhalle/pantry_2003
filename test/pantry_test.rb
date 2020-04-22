@@ -6,6 +6,9 @@ require './lib/ingredient'
 class PantryTest < Minitest::Test
   def setup
     @pantry = Pantry.new
+
+    @ingredient1 = Ingredient.new({name: "Cheese", unit: "oz", calories: 50})
+    
   end
 
   def test_it_exists
@@ -17,7 +20,7 @@ class PantryTest < Minitest::Test
   end
 
   def test_stock_check
-    assert_equal 0, @pantry.stock_check(ingredient1)
+    assert_equal 0, @pantry.stock_check(@ingredient1)
   end
 end
 # ```markdown
