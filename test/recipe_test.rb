@@ -20,6 +20,14 @@ class RecipeTest < Minitest::Test
     assert_equal ({}),@recipe1.ingredients_required
 
   end
+  
+  def test_add_ingredient
+    @recipe1.add_ingredient(@ingredient1, 2)
+    @recipe1.add_ingredient(@ingredient1, 4)
+    @recipe1.add_ingredient(@ingredient2, 8)
+    expected = {@ingredient1 => 6, @ingredient2 => 8}
+    assert_equal expected, @recipe1.ingredients_required
+  end
 end
 # ```markdown
 # There are **4** possible points in Iteration 2:
@@ -41,13 +49,6 @@ end
 
 
 #
-# pry(main)> recipe1.add_ingredient(ingredient1, 2)
-#
-# pry(main)> recipe1.add_ingredient(ingredient1, 4)
-#
-# pry(main)> recipe1.add_ingredient(ingredient2, 8)
-#
-# pry(main)> recipe1.ingredients_required
 # # => {#<Ingredient:0x00007fd7811553c8...> => 6, #<Ingredient:0x00007fd78110b0e8...> => 8}
 #
 # pry(main)> recipe1.ingredients
