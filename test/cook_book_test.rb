@@ -51,27 +51,8 @@ class CookBookTest < Minitest::Test
 
     @cookbook.add_recipe(@recipe1)
     @cookbook.add_recipe(@recipe2)
-    
+
     assert_equal @recipe2, @cookbook.highest_calorie_meal
   end
-  #
-  # # => #<Recipe:0x00007faae692a110...>
-  #
-  # pry(main)> pantry.restock(ingredient1, 5)
-  #
-  # pry(main)> pantry.restock(ingredient1, 10)
-  #
-  # pry(main)> pantry.enough_ingredients_for?(recipe)
-  # # => false
-  #
-  # pry(main)> pantry.restock(ingredient2, 7)
-  #
-  # pry(main)> pantry.enough_ingredients_for?(recipe)
-  # # => false
-  #
-  # pry(main)> pantry.restock(ingredient2, 1)
-  #
-  # pry(main)> pantry.enough_ingredients_for?(recipe)
-  # # => true
-  # ```
+  
 end
