@@ -22,7 +22,35 @@ class CookBook
       recipe.total_calories
     end
   end
+  def recipe_ingredients_and_calories_hash(recipe)
+    ingredients_and_calories = Hash.new
 
+    ingredients_and_calories[:ingredients] = []
+    ingredients_and_calories[:calories] = recipe.total_calories
+    ingredients_and_calories
+  end
+
+  def add_ingredient_info_to_ingredients_hash(recipe)
+    recipe_ingredients_and_calories_hash(recipe)
+    recipe_ingredients_and_calories_hash(recipe)[:ingredients] << recipe.ingredients
+  end
+  def recipe_details(recipe)
+    recipe_details = Hash.new
+    recipe_details[:name] = recipe.name
+    recipe_details[:details] = recipe_ingredients_and_calories_hash(recipe)
+    recipe_details
+  end
+
+  def summary
+    summary = []
+
+    @recipes.map do |recipe|
+      add_ingredient_info_to_ingredients_hash(recipe)
+      summary << recipe_details(recipe)
+    end
+
+
+  end
 
 
 end

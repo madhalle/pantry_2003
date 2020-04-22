@@ -61,7 +61,6 @@ class CookBookTest < Minitest::Test
   end
 
   def test_cook_book_summary
-    #`summary`, ingredients are listed in order of calories.
     @ingredient1 = Ingredient.new(name: "Cheese", unit: "C", calories: 100)
     @ingredient2 = Ingredient.new(name: "Macaroni", unit: "oz", calories: 30)
 
