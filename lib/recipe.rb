@@ -3,9 +3,15 @@ class Recipe
   def initialize(name)
     @name = name
     @ingredients_required = Hash.new(0)
+    @ingredients = []
   end
 
   def add_ingredient(ingredient, quantity)
     @ingredients_required[ingredient] += quantity
+    @ingredients << ingredient
+  end
+
+  def ingredients
+    @ingredients.uniq
   end
 end

@@ -20,13 +20,20 @@ class RecipeTest < Minitest::Test
     assert_equal ({}),@recipe1.ingredients_required
 
   end
-  
+
   def test_add_ingredient
     @recipe1.add_ingredient(@ingredient1, 2)
     @recipe1.add_ingredient(@ingredient1, 4)
     @recipe1.add_ingredient(@ingredient2, 8)
     expected = {@ingredient1 => 6, @ingredient2 => 8}
     assert_equal expected, @recipe1.ingredients_required
+  end
+
+  def test_ingredients
+    @recipe1.add_ingredient(@ingredient1, 2)
+    @recipe1.add_ingredient(@ingredient1, 4)
+    @recipe1.add_ingredient(@ingredient2, 8)
+    assert_equal [@ingredient1, @ingredient2],@recipe1.ingredients
   end
 end
 # ```markdown
@@ -48,10 +55,7 @@ end
 # #
 
 
-#
-# # => {#<Ingredient:0x00007fd7811553c8...> => 6, #<Ingredient:0x00007fd78110b0e8...> => 8}
-#
-# pry(main)> recipe1.ingredients
+
 # # => [#<Ingredient:0x007fe8438c7a70...>, #<Ingredient:0x007fe843857f40...>]
 #
 # pry(main)> recipe2 = Recipe.new("Cheese Burger")
