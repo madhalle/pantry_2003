@@ -21,8 +21,16 @@ class CookBookTest < Minitest::Test
   end
 
   def test_add_recipe
+    @recipe1.add_ingredient(@ingredient1, 2)
+    @recipe1.add_ingredient(@ingredient2, 8)
+
+    @recipe2.add_ingredient(@ingredient1, 2)
+    @recipe2.add_ingredient(@ingredient3, 4)
+    @recipe2.add_ingredient(@ingredient4, 1)
+    
     @cookbook.add_recipe(@recipe1)
     @cookbook.add_recipe(@recipe2)
+
     assert_equal [@recipe1, @recipe2],@cookbook.recipes
     assert_equal ["Cheese", "Macaroni", "Ground Beef", "Bun"], @cookbook.ingredients
   end
