@@ -15,5 +15,9 @@ class Recipe
     @ingredients.uniq
   end
 
+  def total_calories
+    require "pry"; binding.pry
+  end
+
 
 end
