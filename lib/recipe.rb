@@ -20,6 +20,6 @@ class Recipe
       ingredient.calories * quantity
     end
   end
-
+  
 
 end
