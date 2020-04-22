@@ -7,4 +7,8 @@ class CookBook
   def add_recipe(recipe)
     @recipes << recipe
   end
+
+  def ingredients
+    require "pry"; binding.pry
+  end
 end
