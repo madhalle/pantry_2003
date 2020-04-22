@@ -11,6 +11,10 @@ class PantryTest < Minitest::Test
   def test_it_exists
     assert_instance_of Pantry, @pantry
   end
+
+  def test_it_has_attributes
+    assert_equal ({}), @pantry.stock
+  end
 end
 # ```markdown
 # There are **4** Possible Points in Iteration 1:
@@ -21,8 +25,7 @@ end
 # ```
 # # => #<Pantry:0x007fd8858863b8...>
 #
-# pry(main)> pantry.stock
-# # => {}
+
 #
 # pry(main)> pantry.stock_check(ingredient1)
 # # => 0
