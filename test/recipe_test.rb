@@ -14,6 +14,12 @@ class RecipeTest < Minitest::Test
   def test_it_exists
     assert_instance_of Recipe, @recipe1
   end
+
+  def test_it_has_attributes
+    assert_equal "Mac and Cheese", @recipe1.name
+    assert_equal ({}),@recipe1.ingredients_required
+
+  end
 end
 # ```markdown
 # There are **4** possible points in Iteration 2:
@@ -22,10 +28,7 @@ end
 # 3. Recipe #ingredients
 # 4. CookBook #add_recipe
 # ```
-#
-# # Use TDD to build a `Recipe` and a `CookBook` class that
-# respond to the following interaction pattern.
-# #
+
 # # For the `add_ingredient` method, the first argument is an
 # Ingredient, and the second argument is the amount of the ingredient
 # required for the Recipe.
@@ -36,11 +39,7 @@ end
 #   of the ingredient required for the recipe.
 # #
 
-# pry(main)> recipe1.name
-# # => "Mac and Cheese"
-#
-# pry(main)> recipe1.ingredients_required
-# # => {}
+
 #
 # pry(main)> recipe1.add_ingredient(ingredient1, 2)
 #
