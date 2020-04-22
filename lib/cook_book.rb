@@ -29,24 +29,34 @@ class CookBook
     ingredients_and_calories[:calories] = recipe.total_calories
     ingredients_and_calories
   end
+  def ingredient_hash(recipe)
+    ingredient_hash = Hash.new
+    recipe.ingredients_required.map do |ingredient, quantity|
+      ingredient_hash[:name] = ingredient.name
+      ingredient_hash[:amount] = "#{quantity}" + " " +ingredient.unit
+      ingredient_hash
+    end
 
+  end
   def add_ingredient_info_to_ingredients_hash(recipe)
     recipe_ingredients_and_calories_hash(recipe)
-    recipe_ingredients_and_calories_hash(recipe)[:ingredients] << recipe.ingredients
+
+
   end
+
   def recipe_details(recipe)
     recipe_details = Hash.new
     recipe_details[:name] = recipe.name
     recipe_details[:details] = recipe_ingredients_and_calories_hash(recipe)
-    recipe_details
   end
 
   def summary
     summary = []
 
     @recipes.map do |recipe|
-      add_ingredient_info_to_ingredients_hash(recipe)
+      add_ingredient_info_to_ingredients_hash(recipe).flatten
       summary << recipe_details(recipe)
+      require "pry"; binding.pry
     end
 
 
