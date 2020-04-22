@@ -22,4 +22,9 @@ class CookBook
     end
   end
 
+  def date
+    creation_date = Time.new
+    creation_date.strftime("%m-%d-%Y")
+  end
+
 end
