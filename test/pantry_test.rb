@@ -28,6 +28,8 @@ class PantryTest < Minitest::Test
     @pantry.restock(@ingredient1, 10)
     assert_equal 15, @pantry.stock_check(@ingredient1)
 
+    @pantry.restock(@ingredient2, 7)
+    assert_equal 7, @pantry.stock_check(@ingredient2)
   end
 end
 # ```markdown
@@ -36,11 +38,4 @@ end
 # 2. Pantry Creation - including all attr_readers
 # 3. Pantry #check_stock
 # 4. Pantry #restock
-# ```
-
-
-# pry(main)> pantry.restock(ingredient2, 7)
-#
-# pry(main)> pantry.stock_check(ingredient2)
-# # => 7
 # ```
