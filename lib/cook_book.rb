@@ -1,7 +1,8 @@
 class CookBook
-  attr_reader :recipes
+  attr_reader :recipes, :date
   def initialize
     @recipes = []
+    @date = Time.new.strftime("%m-%d-%Y").freeze
   end
 
   def add_recipe(recipe)
@@ -22,9 +23,6 @@ class CookBook
     end
   end
 
-  def date
-    creation_date = Time.new
-    creation_date.strftime("%m-%d-%Y")
-  end
+
 
 end

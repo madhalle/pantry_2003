@@ -57,6 +57,42 @@ class CookBookTest < Minitest::Test
 
   def test_cookbook_date_created
     assert_equal "04-22-2020", @cookbook.date
+    #date neets to be set once cook book is initialized...""
+  end
+
+  def test_cook_book_summary
+    #`summary`, ingredients are listed in order of calories.
+    @ingredient1 = Ingredient.new(name: "Cheese", unit: "C", calories: 100)
+    @ingredient2 = Ingredient.new(name: "Macaroni", unit: "oz", calories: 30)
+
+    @recipe1 = Recipe.new("Mac and Cheese")
+
+
+    @recipe1.add_ingredient(@ingredient1, 2)
+    @recipe1.add_ingredient(@ingredient2, 8)
+
+    @ingredient3 = Ingredient.new(name: "Ground Beef", unit: "oz", calories: 100)
+    @ingredient4 = Ingredient.new(name: "Bun", unit: "g", calories: 1)
+    @recipe2 = Recipe.new("Burger")
+
+    @recipe2.add_ingredient(@ingredient3, 4)
+    @recipe2.add_ingredient(@ingredient4, 100)
+
+    @cookbook.add_recipe(@recipe1)
+    @cookbook.add_recipe(@recipe2)
+    expected = [{:name=>"Mac and Cheese",
+      :details=>
+      {:ingredients=>[{:ingredient=>"Macaroni", :amount=>"8 oz"},
+        {:ingredient=>"Cheese", :amount=>"2 C"}],
+        :total_calories=>440}},
+
+    {:name=>"Burger",
+      :details=>
+      {:ingredients=>[{:ingredient=>"Ground Beef", :amount=>"4 oz"},
+        {:ingredient=>"Bun", :amount=>"100 g"}],
+        :total_calories=>500}}]
+
+    assert_equal expected , @cookbook.summary
   end
   # ```markdown
   # There are **2** possible points in iteration 4
@@ -65,7 +101,6 @@ class CookBookTest < Minitest::Test
   # ```
   #
   #
-  # For the `summary`, ingredients are listed in order of calories.
    # This is the amount of calories that ingredient contributes to
    # the total calories of the recipe, not the amount of calories per
    # single unit of the ingredient.
@@ -73,38 +108,5 @@ class CookBookTest < Minitest::Test
   # # The 'date' method should return the date the cookbook is created as "mm-dd-yyyy"
   # # => "04-22-2020"
   #
-  # pry(main)> ingredient1 = Ingredient.new(name: "Cheese", unit: "C", calories: 100)
-  # # => #<Ingredient:0x00007faae6a207e0...>
-  #
-  # pry(main)> ingredient2 = Ingredient.new(name: "Macaroni", unit: "oz", calories: 30)
-  # # => #<Ingredient:0x00007faae69e3cf0...>
-  #
-  # pry(main)> recipe1 = Recipe.new("Mac and Cheese")
-  # # => #<Recipe:0x00007faae69c9698...>
-  #
-  # pry(main)> recipe1.add_ingredient(ingredient1, 2)
-  #
-  # pry(main)> recipe1.add_ingredient(ingredient2, 8)
-  #
-  # pry(main)> ingredient3 = Ingredient.new(name: "Ground Beef", unit: "oz", calories: 100)
-  # # => #<Ingredient:0x00007faae6950860...>
-  #
-  # pry(main)> ingredient4 = Ingredient.new(name: "Bun", unit: "g", calories: 1)
-  # # => #<Ingredient:0x00007faae694bb80...>
-  #
-  # pry(main)> recipe2 = Recipe.new("Burger")
-  # # => #<Recipe:0x00007faae692a110...>
-  #
-  # pry(main)> recipe2.add_ingredient(ingredient3, 4)
-  #
-  # pry(main)> recipe2.add_ingredient(ingredient4, 100)
-  #
-  # pry(main)> cookbook.add_recipe(recipe1)
-  #
-  # pry(main)> cookbook.add_recipe(recipe2)
-  #
-  # pry(main)> cookbook.summary
-  # # => [{:name=>"Mac and Cheese", :details=>{:ingredients=>[{:ingredient=>"Macaroni", :amount=>"8 oz"}, {:ingredient=>"Cheese", :amount=>"2 C"}], :total_calories=>440}}, {:name=>"Burger", :details=>{:ingredients=>[{:ingredient=>"Ground Beef", :amount=>"4 oz"}, {:ingredient=>"Bun", :amount=>"100 g"}], :total_calories=>500}}]
-  # ```
 
 end
