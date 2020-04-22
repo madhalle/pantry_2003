@@ -36,6 +36,10 @@ class RecipeTest < Minitest::Test
     @recipe1.add_ingredient(@ingredient2, 8)
     assert_equal [@ingredient1, @ingredient2],@recipe1.ingredients
   end
+
+  def test_total_calories
+    assert_equal 840, @recipe1.total_calories
+  end
 end
 # ```markdown
 # There are **4** possible points in Iteration 2:
@@ -53,21 +57,3 @@ end
 #  ingredient. The calories for each ingredient can be calculated by
 #  multiplying the `calories` attribute of the Ingredient by the amount
 #   of the ingredient required for the recipe.
-# #
-
-
-
-
-#
-# pry(main)> cookbook = CookBook.new
-# # => #<CookBook:0x00007faae6a42228 @recipes=[]>
-#
-# pry(main)> cookbook.add_recipe(recipe1)
-#
-# pry(main)> cookbook.add_recipe(recipe2)
-#
-# pry(main)> cookbook.recipes
-# # => [#<Recipe:0x00007faae69c9698...>, #<Recipe:0x00007faae692a110...>]
-# ```
-
-##

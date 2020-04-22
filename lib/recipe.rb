@@ -14,4 +14,6 @@ class Recipe
   def ingredients
     @ingredients.uniq
   end
+
+
 end
