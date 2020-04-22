@@ -9,6 +9,7 @@ class RecipeTest < Minitest::Test
     @ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
 
     @recipe1 = Recipe.new("Mac and Cheese")
+    @recipe2 = Recipe.new("Cheese Burger")
   end
 
   def test_it_exists
@@ -56,9 +57,7 @@ end
 
 
 
-# # => [#<Ingredient:0x007fe8438c7a70...>, #<Ingredient:0x007fe843857f40...>]
-#
-# pry(main)> recipe2 = Recipe.new("Cheese Burger")
+
 #
 # pry(main)> cookbook = CookBook.new
 # # => #<CookBook:0x00007faae6a42228 @recipes=[]>
