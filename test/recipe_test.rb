@@ -7,6 +7,8 @@ class RecipeTest < Minitest::Test
   def setup
     @ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})
     @ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
+    @ingredient3 = Ingredient.new({name: "Ground Beef", unit: "oz", calories: 100})
+    @ingredient4 = Ingredient.new({name: "Bun", unit: "g", calories: 75})
 
     @recipe1 = Recipe.new("Mac and Cheese")
     @recipe2 = Recipe.new("Cheese Burger")
@@ -39,24 +41,55 @@ class RecipeTest < Minitest::Test
 
   def test_total_calories
     @recipe1.add_ingredient(@ingredient1, 2)
-    @recipe1.add_ingredient(@ingredient1, 4)
     @recipe1.add_ingredient(@ingredient2, 8)
-    assert_equal 840, @recipe1.total_calories
-  end
-end
-# ```markdown
-# There are **4** possible points in Iteration 2:
-# 1. Recipe and CookBook Creation - including all attr_readers
-# 2. Recipe #add_ingredient
-# 3. Recipe #ingredients
-# 4. CookBook #add_recipe
-# ```
 
-# # For the `add_ingredient` method, the first argument is an
-# Ingredient, and the second argument is the amount of the ingredient
-# required for the Recipe.
-# #
-# # The `total_calories` method should sum the calories of each
-#  ingredient. The calories for each ingredient can be calculated by
-#  multiplying the `calories` attribute of the Ingredient by the amount
-#   of the ingredient required for the recipe.
+    @recipe2.add_ingredient(@ingredient1, 2)
+    @recipe2.add_ingredient(@ingredient3, 4)
+    @recipe2.add_ingredient(@ingredient4, 1)
+
+    assert_equal 440, @recipe1.total_calories
+    assert_equal 675, @recipe2.total_calories
+  end
+  #
+  # ```markdown
+  # There are **4** possible points in Iteration 3:
+  # 1. Recipe #total_calories
+  # 2. CookBook #ingredients
+  # 3. CookBook #highest_calorie_meal
+  # 4. Pantry #enough_ingredients_for
+  # ```
+  #
+
+  #
+
+  #
+  # pry(main)> cookbook.add_recipe(recipe1)
+  #
+  # pry(main)> cookbook.add_recipe(recipe2)
+  #
+  # pry(main)> cookbook.ingredients
+  # # => ["Cheese", "Macaroni", "Ground Beef", "Bun"]
+  #
+  # pry(main)> cookbook.highest_calorie_meal
+  # # => #<Recipe:0x00007faae692a110...>
+  #
+  # pry(main)> pantry.restock(ingredient1, 5)
+  #
+  # pry(main)> pantry.restock(ingredient1, 10)
+  #
+  # pry(main)> pantry.enough_ingredients_for?(recipe)
+  # # => false
+  #
+  # pry(main)> pantry.restock(ingredient2, 7)
+  #
+  # pry(main)> pantry.enough_ingredients_for?(recipe)
+  # # => false
+  #
+  # pry(main)> pantry.restock(ingredient2, 1)
+  #
+  # pry(main)> pantry.enough_ingredients_for?(recipe)
+  # # => true
+  # ```
+  #
+  # ##
+end
