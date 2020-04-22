@@ -9,6 +9,10 @@ class CookBook
   end
 
   def ingredients
-    require "pry"; binding.pry
+    @recipes.flat_map do |recipe|
+      recipe.ingredients.map do |ingredient|
+        ingredient.name
+      end
+    end.uniq
   end
 end
